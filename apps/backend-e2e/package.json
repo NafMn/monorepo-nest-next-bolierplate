@@ -1,0 +1,26 @@
+{
+  "name": "@monorepo-next-nest/backend-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@monorepo-next-nest/backend"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/jest:jest",
+        "outputs": [
+          "{projectRoot}/test-output/jest/coverage"
+        ],
+        "options": {
+          "jestConfig": "apps/backend-e2e/jest.config.ts",
+          "passWithNoTests": true
+        },
+        "dependsOn": [
+          "@monorepo-next-nest/backend:build",
+          "@monorepo-next-nest/backend:serve"
+        ]
+      }
+    }
+  }
+}
